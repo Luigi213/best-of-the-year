@@ -1,6 +1,7 @@
 package org.java.project.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.java.project.Movie;
@@ -46,8 +47,12 @@ public class YearController {
 	@GetMapping("/songs")
 	public String listSongs(Model model) {
 		String list = "";
-		for( Song s : getBestSongs()) {
-			list += s.getTitolo() + ","; 
+		for( Song s : getBestSongs()) {	
+			if(list.equals("")) {				
+				list += s.getTitolo(); 
+			} else {
+				list += "," + s.getTitolo(); 
+			}
 		}
 		model.addAttribute("name", list);
 		
@@ -58,7 +63,11 @@ public class YearController {
 	public String listMovies(Model model) {
 		String list = "";
 		for( Movie m : getBestMovies()) {
-			list += m.getTitolo() + ","; 
+			if(list.equals("")) {				
+				list += m.getTitolo(); 
+			} else {
+				list += "," + m.getTitolo(); 
+			}
 		}
 		model.addAttribute("name", list);
 		

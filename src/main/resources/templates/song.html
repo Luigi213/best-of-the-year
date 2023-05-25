@@ -8,7 +8,7 @@
 	<h1>Benvenuto in Canzoni</h1>
 	<ul>
 		<li th:each="song : ${songs}" th:object="${song}">
-			<th:block th:replace="frag/song-list :: song(*{id}, *{titolo})"></th:block> 
+			<th:block th:replace="~{frag/song-list :: song(*{id}, *{titolo})}"></th:block> 
 		</li>
 	</ul>
 </body>

@@ -29,9 +29,9 @@ public class YearController {
 	private List<Movie> getBestMovies(){
 		List<Movie> ml = new ArrayList<>();
 		
-		ml.add(new Movie(0, "ciao film"));
-		ml.add(new Movie(1, "ciao1 film1"));
-		ml.add(new Movie(2, "ciao2 film2"));
+		ml.add(new Movie(1, "ciao film"));
+		ml.add(new Movie(2, "ciao1 film1"));
+		ml.add(new Movie(3, "ciao2 film2"));
 		
 		return ml;
 	}
@@ -39,9 +39,9 @@ public class YearController {
 	private List<Song> getBestSongs(){
 		List<Song> sl = new ArrayList<>();
 		
-		sl.add(new Song(0, "ciao canzone"));
-		sl.add(new Song(1, "ciao1 canzone1"));
-		sl.add(new Song(2, "ciao2 canzone2"));
+		sl.add(new Song(1, "ciao canzone"));
+		sl.add(new Song(2, "ciao1 canzone1"));
+		sl.add(new Song(3, "ciao2 canzone2"));
 		return sl;
 	}
 	

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Benvenuto in Canzoni</h1>
+	<ul>
+		<li th:each="song : ${songs}" th:object="${song}">
+			<th:block th:replace="frag/song-list :: song(*{id}, *{titolo})"></th:block> 
+		</li>
+	</ul>
+</body>
+</html>

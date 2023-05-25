@@ -1,7 +1,6 @@
 package org.java.project.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.java.project.Movie;
@@ -10,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/")
 public class YearController {
 	
 	@GetMapping("/hola")
@@ -46,65 +47,47 @@ public class YearController {
 	
 	@GetMapping("/songs")
 	public String listSongs(Model model) {
-		String list = "";
-		for( Song s : getBestSongs()) {	
-			if(list.equals("")) {				
-				list += s.getTitolo(); 
-			} else {
-				list += "," + s.getTitolo(); 
-			}
-		}
-		model.addAttribute("name", list);
+		List<Song> songs = getBestSongs();
 		
-		return "index";
+		model.addAttribute("songs", songs);
+		
+		return "song";
 	}
 	
 	@GetMapping("/movies")
 	public String listMovies(Model model) {
-		String list = "";
-		for( Movie m : getBestMovies()) {
-			if(list.equals("")) {				
-				list += m.getTitolo(); 
-			} else {
-				list += "," + m.getTitolo(); 
-			}
-		}
-		model.addAttribute("name", list);
+		List<Movie> movies = getBestMovies();
+
+		model.addAttribute("movies", movies);
 		
-		return "index";
+		return "movie";
 	}
 	
 	@GetMapping("/songs/{id}")
 	public String getIdSongs(Model model,
 			@PathVariable("id") int id) {
-		String song = "";
+		Song song = null;
 		for( Song s : getBestSongs()) {
 			if(s.getId() == id) {				
-				song = s.getTitolo(); 
-			}
-			else {
-				song = "nessuna canzone con questo id";
+				song = s; 
 			}
 		}
-		model.addAttribute("name", song);
+		model.addAttribute("song", song);
 		
-		return "index";
+		return "song-detail";
 	}
 	
 	@GetMapping("/movies/{id}")
 	public String getIdMovies(Model model,
 			@PathVariable("id") int id) {
-		String movie = "";
+		Movie movie = null;
 		for( Movie m : getBestMovies()) {
 			if(m.getId() == id) {				
-				movie = m.getTitolo(); 
-			}
-			else {
-				movie = "nessuna canzone con questo id";
+				movie = m; 
 			}
 		}
-		model.addAttribute("name", movie);
+		model.addAttribute("movie", movie);
 		
-		return "index";
+		return "movie-detail";
 	}
 }

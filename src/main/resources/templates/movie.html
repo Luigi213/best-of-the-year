@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Bevenuto in Film</h1>
+	<ul>
+		<li th:each="movie : ${movies}" th:object="${movie}">
+			<th:block th:replace="frag/movie-list :: movie(*{id}, *{titolo})"></th:block> 
+		</li>
+	</ul>
+</body>
+</html>
